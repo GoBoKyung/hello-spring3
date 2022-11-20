@@ -1,7 +1,6 @@
 package hello.hellospring.repository;
 
 import hello.hellospring.domain.member;
-import hello.hellospring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +21,7 @@ class MemoryMemberRepositoryTest {
         member member = new member();
         member.setName("spring");
 
-        repository.save(member);
+        repository.save(member, parameterIndex);
 
         member result = repository.findById(member.getId()).get();
         assertThat(member).isEqualTo(result);
@@ -32,11 +31,11 @@ class MemoryMemberRepositoryTest {
     public void findByName() {
         member member1 = new member();
         member1.setName("spring1");
-        repository.save(member1);
+        repository.save(member1, parameterIndex);
 
         member member2 = new member();
         member2.setName("spring2");
-        repository.save(member2);
+        repository.save(member2, parameterIndex);
 
         member result = repository.findByName("spring1").get();
 
@@ -47,11 +46,11 @@ class MemoryMemberRepositoryTest {
     public void findAll() {
         member member1 = new member();
         member1.setName("spring1");
-        repository.save(member1);
+        repository.save(member1, parameterIndex);
 
         member member2 = new member();
         member2.setName("spring2");
-        repository.save(member2);
+        repository.save(member2, parameterIndex);
 
         List<member> result = repository.findAll();
 

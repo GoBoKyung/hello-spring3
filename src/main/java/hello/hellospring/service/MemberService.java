@@ -2,9 +2,6 @@ package hello.hellospring.service;
 
 import hello.hellospring.domain.member;
 import hello.hellospring.repository.MemberRepository;
-import hello.hellospring.repository.MemoryMemberRepository;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +18,7 @@ public class MemberService {
     public Long join(member meember) {
 
         validateDuplicateMember(member);
-        memberRepository.save(member);
+        memberRepository.save(member, parameterIndex);
         return member.getId();
     }
 
